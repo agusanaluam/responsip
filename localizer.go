@@ -14,7 +14,7 @@ func (r *Responsip) InitLocalizer() error {
 	r.bundle = i18n.NewBundle(r.Lang)
 	r.bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
 
-	files, err := os.ReadDir(langDir)
+	files, err := os.ReadDir("./" + langDir)
 	if err != nil {
 		return err
 	}
