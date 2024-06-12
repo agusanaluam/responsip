@@ -1,4 +1,4 @@
-module github.com/responsip
+module github.com/agusanaluam/responsip
 
 go 1.22.4
 

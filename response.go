@@ -1,20 +1,18 @@
 package responsip
 
 import (
-	"context"
 	"net/http"
 	"time"
 
+	"github.com/agusanaluam/responsip/constant"
+	"github.com/agusanaluam/responsip/schema"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
-
-	"github.com/responsip/constant"
-	"github.com/responsip/schema"
 )
 
 type Responsip struct {
-	ctx    context.Context
-	lang   language.Tag
+	Lang   language.Tag
+	Module string
 	bundle *i18n.Bundle
 }
 
