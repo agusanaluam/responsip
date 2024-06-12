@@ -1,9 +1,9 @@
-package context
+package responsip
 
 import "github.com/gofiber/fiber/v2"
 
 type FiberContext struct {
-	Context fiber.Ctx
+	Context *fiber.Ctx
 }
 
 func (f FiberContext) JSON(statusCode int, v interface{}) error {

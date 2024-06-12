@@ -17,9 +17,7 @@ type Responsip struct {
 	bundle *i18n.Bundle
 }
 
-type EchoContext context.EchoContext
 type GinContext context.GinContext
-type FiberContext context.FiberContext
 type MuxContext context.MuxContext
 
 type Context interface {
