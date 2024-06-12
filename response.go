@@ -12,14 +12,15 @@ import (
 )
 
 type Responsip struct {
-	Lang         language.Tag
-	Module       string
-	bundle       *i18n.Bundle
-	EchoContext  context.EchoContext
-	GinContext   context.GinContext
-	FiberContext context.FiberContext
-	MuxContext   context.MuxContext
+	Lang   language.Tag
+	Module string
+	bundle *i18n.Bundle
 }
+
+type EchoContext context.EchoContext
+type GinContext context.GinContext
+type FiberContext context.FiberContext
+type MuxContext context.MuxContext
 
 type Context interface {
 	JSON(statusCode int, v interface{}) error
