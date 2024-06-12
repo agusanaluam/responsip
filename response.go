@@ -5,15 +5,20 @@ import (
 	"time"
 
 	"github.com/agusanaluam/responsip/constant"
+	"github.com/agusanaluam/responsip/context"
 	"github.com/agusanaluam/responsip/schema"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
 )
 
 type Responsip struct {
-	Lang   language.Tag
-	Module string
-	bundle *i18n.Bundle
+	Lang         language.Tag
+	Module       string
+	bundle       *i18n.Bundle
+	EchoContext  context.EchoContext
+	GinContext   context.GinContext
+	FiberContext context.FiberContext
+	MuxContext   context.MuxContext
 }
 
 type Context interface {
