@@ -1,0 +1,3 @@
+{
+    "success_message": "inserto exitoso {{.module}}"
+}

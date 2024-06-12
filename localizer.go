@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/nicksnyder/go-i18n/v2/i18n"
-	"golang.org/x/text/language"
 )
 
 var langDir string = "constant/lang"
@@ -28,11 +27,7 @@ func (r *Responsip) InitLocalizer() error {
 
 func (r *Responsip) GetLocalizedString(ctx Context, messageID string) string {
 	accept := ctx.GetHeader("Accept-Language")
-	matcher := language.NewMatcher(r.bundle.LanguageTags())
-	_, i, _ := matcher.Match(language.Make(accept))
-
-	lang := r.bundle.LanguageTags()[i]
-	localizer := i18n.NewLocalizer(r.bundle, lang.String())
+	localizer := i18n.NewLocalizer(r.bundle, accept)
 	msg, err := localizer.Localize(&i18n.LocalizeConfig{
 		MessageID: messageID,
 		TemplateData: map[string]interface{}{
