@@ -20,7 +20,7 @@ func (r *Responsip) InitLocalizer() error {
 	}
 
 	for _, file := range files {
-		r.bundle.LoadMessageFile(fmt.Sprintf("%s/%s", langDir, file))
+		r.bundle.LoadMessageFile(fmt.Sprintf("%s/%s", langDir, file.Name()))
 	}
 	return nil
 }
