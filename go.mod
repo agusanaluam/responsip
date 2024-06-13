@@ -5,7 +5,7 @@ go 1.22.4
 require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/gofiber/fiber/v2 v2.52.4
-	github.com/labstack/echo v3.3.10+incompatible
+	github.com/labstack/echo/v4 v4.12.0
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/text v0.16.0
