@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/agusanaluam/responsip/constant"
-	"github.com/agusanaluam/responsip/context"
 	"github.com/agusanaluam/responsip/schema"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
@@ -16,9 +15,6 @@ type Responsip struct {
 	Module string
 	bundle *i18n.Bundle
 }
-
-type GinContext context.GinContext
-type MuxContext context.MuxContext
 
 type Context interface {
 	JSON(statusCode int, v interface{}) error
