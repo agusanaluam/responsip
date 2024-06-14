@@ -1,6 +1,8 @@
 package responsip
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,4 +17,8 @@ func (g GinContext) JSON(statusCode int, v interface{}) error {
 
 func (g GinContext) GetHeader(key string) string {
 	return g.Context.Request.Header[key][0]
+}
+
+func (g GinContext) SetCookie(cookie *http.Cookie) {
+	g.SetCookie(cookie)
 }

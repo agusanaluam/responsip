@@ -22,8 +22,13 @@ func InitMessage() {
 		Lang: "en",
 		Msg:  lang.EnMsg,
 	}
+	cnMessage := &Message{
+		Lang: "cn",
+		Msg:  lang.CnMsg,
+	}
 
-	ListMessage = append(ListMessage, *enMessage)
 	ListMessage = append(ListMessage, *idMessage)
+	ListMessage = append(ListMessage, *enMessage)
+	ListMessage = append(ListMessage, *cnMessage)
 
 }

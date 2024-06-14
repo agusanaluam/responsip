@@ -10,6 +10,8 @@ import (
 
 // var langDir string = "constant/lang"
 
+type Localizer struct{}
+
 func (r *Responsip) InitLocalizer() error {
 	r.bundle = i18n.NewBundle(r.Lang)
 	r.bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
@@ -31,13 +33,13 @@ func (r *Responsip) InitLocalizer() error {
 	return nil
 }
 
-func (r *Responsip) GetLocalizedString(ctx Context, messageID string) string {
+func getLocalizedString(ctx Context, bundle *i18n.Bundle, messageID, module string) string {
 	accept := ctx.GetHeader("Accept-Language")
-	localizer := i18n.NewLocalizer(r.bundle, accept)
+	localizer := i18n.NewLocalizer(bundle, accept)
 	msg, err := localizer.Localize(&i18n.LocalizeConfig{
 		MessageID: messageID,
 		TemplateData: map[string]interface{}{
-			"module": r.Module,
+			"module": module,
 		},
 	})
 	if err != nil {

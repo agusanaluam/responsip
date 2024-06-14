@@ -26,18 +26,18 @@ func TestEchoResponseSuccess(t *testing.T) {
 	resp := Responsip{
 		Lang:   language.Indonesian,
 		Module: "image-api",
+		Ctx:    EchoContext{Context: c},
 	}
 	resp.InitLocalizer()
-	ctx := EchoContext{Context: c}
 
 	// Call JSONSuccess function
-	err := resp.SuccessResponse(ctx, "success_message", "success_data")
+	err := resp.OK("success_message", "success_data")
 	fmt.Println(rec.Body.String())
 
 	// Assertions
 	if assert.NoError(t, err) {
 		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.JSONEq(t, fmt.Sprintf(`{"status":"success", "statusCode":200,"message":"%s", "timestamp":"%s","data":"success_data"}`, resp.GetLocalizedString(ctx, "success_message"), time.Now().UTC().Format("2006-01-02T15:04:05.00000000Z")), rec.Body.String())
+		assert.JSONEq(t, fmt.Sprintf(`{"status":"success", "statusCode":200,"message":"%s", "timestamp":"%s","data":"success_data"}`, "success_message", time.Now().UTC().Format("2006-01-02T15:04:05.00000000Z")), rec.Body.String())
 	}
 }
 
@@ -55,18 +55,18 @@ func TestGinResponseSuccess(t *testing.T) {
 	resp := Responsip{
 		Lang:   language.Indonesian,
 		Module: "image-api",
+		Ctx:    GinContext{Context: ctx},
 	}
 	resp.InitLocalizer()
-	gctx := GinContext{Context: ctx}
 
 	// Call JSONSuccess function
-	err := resp.SuccessResponse(gctx, "success_message", "success_data")
+	err := resp.OK("success_message", "success_data")
 	fmt.Println(w.Body.String())
 
 	// Assertions
 	if assert.NoError(t, err) {
 		assert.Equal(t, http.StatusOK, w.Code)
-		assert.JSONEq(t, fmt.Sprintf(`{"status":"success", "statusCode":200,"message":"%s", "timestamp":"%s","data":"success_data"}`, resp.GetLocalizedString(gctx, "success_message"), time.Now().UTC().Format("2006-01-02T15:04:05.00000000Z")), w.Body.String())
+		assert.JSONEq(t, fmt.Sprintf(`{"status":"success", "statusCode":200,"message":"%s", "timestamp":"%s","data":"success_data"}`, "success_message", time.Now().UTC().Format("2006-01-02T15:04:05.00000000Z")), w.Body.String())
 	}
 }
 
@@ -78,12 +78,12 @@ func TestFiberResponseSuccess(t *testing.T) {
 		resp := Responsip{
 			Lang:   language.Indonesian,
 			Module: "image-api",
+			Ctx:    FiberContext{Context: c},
 		}
 		resp.InitLocalizer()
-		fctx := FiberContext{Context: c}
 
 		// Call JSONSuccess function
-		return resp.SuccessResponse(fctx, "success_message", "success_data")
+		return resp.OK("success_message", "success_data")
 	})
 
 	// Create a test request

@@ -19,3 +19,7 @@ func (m MuxContext) JSON(statusCode int, v interface{}) error {
 func (m MuxContext) GetHeader(key string) string {
 	return m.Request.Header.Get(key)
 }
+
+func (m MuxContext) SetCookie(cookie *http.Cookie) {
+	m.SetCookie(cookie)
+}
