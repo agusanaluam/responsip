@@ -1,2 +1,2 @@
-# responsip
+# Responsip
 Custom Response package 

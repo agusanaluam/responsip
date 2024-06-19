@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/agusanaluam/responsip/constant"
+	"github.com/agusanaluam/responsip/constant/lang"
 	"github.com/go-playground/validator/v10"
 	"github.com/lib/pq"
 )
@@ -143,58 +143,58 @@ func commonError(err error) (int, string) {
 	}
 
 	switch err.Error() {
-	case constant.ErrInvalidOrEmptyToken.Error():
+	case lang.ErrInvalidOrEmptyToken:
 		return http.StatusUnauthorized, err.Error()
-	case constant.ErrorHttpInvalidServiceToken.Error():
+	case lang.ErrorHttpInvalidServiceToken:
 		return http.StatusUnauthorized, err.Error()
-	case constant.ErrTokenIsExpired.Error():
+	case lang.ErrTokenIsExpired:
 		return http.StatusUnauthorized, err.Error()
-	case constant.ErrInvalidSignature.Error():
+	case lang.ErrInvalidSignature:
 		return http.StatusUnauthorized, err.Error()
 	case "token signature is invalid":
 		return http.StatusUnauthorized, err.Error()
-	case constant.ErrSuspended.Error():
+	case lang.ErrSuspended:
 		return http.StatusForbidden, err.Error()
-	case constant.ErrNoResult.Error():
+	case lang.ErrNoResult:
 		return http.StatusNotFound, err.Error()
-	case constant.ErrInvalidDate.Error():
+	case lang.ErrInvalidDate:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrInvalidDateRange.Error():
+	case lang.ErrInvalidDateRange:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrMinimumTransfer.Error():
+	case lang.ErrMinimumTransfer:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrMaximumTransfer.Error():
+	case lang.ErrMaximumTransfer:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrNominalNotMatch.Error():
+	case lang.ErrNominalNotMatch:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrInvalidMutationID.Error():
+	case lang.ErrInvalidMutationID:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrInvalidMutationStatus.Error():
+	case lang.ErrInvalidMutationStatus:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrUserId.Error():
+	case lang.ErrId:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrDebitNoteType.Error():
+	case lang.ErrDebitNoteType:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrCreditNoteType.Error():
+	case lang.ErrCreditNoteType:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrWeight.Error():
+	case lang.ErrWeight:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrCourier.Error():
+	case lang.ErrCourier:
 		return http.StatusBadRequest, err.Error()
-	case constant.ErrWalletExist.Error():
+	case lang.ErrExist:
 		return http.StatusConflict, err.Error()
-	case constant.ErrContactExist.Error():
+	case lang.ErrContactExist:
 		return http.StatusConflict, err.Error()
-	case constant.ErrConvertCoin.Error():
+	case lang.ErrConvertCoin:
 		return http.StatusBadRequest, err.Error()
 	case "pq: null value in column \"active_balance\" violates not-null constraint":
 		return http.StatusBadRequest, "insufficient balance"
 	case "pq: null value in column \"active_coin\" violates not-null constraint":
 		return http.StatusBadRequest, "can't convert cash to coin"
 	// case "pq: duplicate key value violates unique constraint \"favorite_contacts_un\"":
-	// 	return http.StatusConflict, constant.ErrContactExist
+	// 	return http.StatusConflict, lang.ErrContactExist
 	case "sql: no rows in result set":
-		return http.StatusNotFound, constant.ResponseNotFound
+		return http.StatusNotFound, lang.ErrNoResult
 	case "cannot transfer to yourself":
 		return http.StatusBadRequest, err.Error()
 	case "pin incorrect":

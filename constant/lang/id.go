@@ -93,4 +93,24 @@ var IdMsg = []*i18n.Message{
 		ID:    ErrDuplicateElement,
 		Other: "duplikat data {{.module}}",
 	},
+	{
+		ID:    ErrInvalidOrEmptyToken,
+		Other: "unauthorized",
+	},
+	{
+		ID:    ErrorHttpInvalidServiceToken,
+		Other: "invalid service token",
+	},
+	{
+		ID:    ErrTokenIsExpired,
+		Other: "token is expired",
+	},
+	{
+		ID:    ErrInvalidSignature,
+		Other: "invalid signature key",
+	},
+	{
+		ID:    ErrAccountSuspended,
+		Other: "your account is suspended",
+	},
 }

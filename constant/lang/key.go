@@ -28,13 +28,14 @@ const (
 	ErrExist                 = "err_exist"
 	ErrContactExist          = "err_contact_exist"
 	ErrConvertCoin           = "err_convert_coin"
+	ErrSuspended             = "err_suspended"
 
 	// Authorization
 	ErrInvalidOrEmptyToken       = "err_invalid_token"
 	ErrorHttpInvalidServiceToken = "err_invalid_service_token"
 	ErrTokenIsExpired            = "err_token_expired"
 	ErrInvalidSignature          = "err_invalid_signature"
-	ErrSuspended                 = "err_suspended"
+	ErrAccountSuspended          = "err_account_suspended"
 
 	ErrDuplicateElement = "err_duplicate_element"
 )
